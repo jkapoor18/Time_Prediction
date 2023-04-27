@@ -94,8 +94,8 @@ class DataTransformation:
             target_feature_test_df=test_df[target_column_name]
             
             ## Trnasformating using preprocessor obj
-            ##input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
-            ##input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
+            #input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
+            #input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
 
             logging.info("Applying preprocessing object on training and testing datasets.")
             
@@ -115,7 +115,7 @@ class DataTransformation:
             return (
                 #train_arr,
                 #test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
+                self.data_transformation_config.preprocessor_obj_file_path
             )
             
         except Exception as e:

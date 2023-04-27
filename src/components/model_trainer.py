@@ -24,7 +24,7 @@ class ModelTrainer:
     def initate_model_training(self,train_array,test_array):
         try:
             logging.info('Splitting Dependent and Independent variables from train and test data')
-            X_train, y_train, X_test, y_test = (
+            xtrain, ytrain, xtest, ytest = (
                 train_array[:,:-1],
                 train_array[:,-1],
                 test_array[:,:-1],
@@ -38,7 +38,7 @@ class ModelTrainer:
             'Elasticnet':ElasticNet()
         }
             
-            model_report:dict=evaluate_model(X_train,y_train,X_test,y_test,models)
+            model_report:dict=evaluate_model(xtrain,ytrain,xtest,ytest,models)
             print(model_report)
             print('\n====================================================================================\n')
             logging.info(f'Model Report : {model_report}')
