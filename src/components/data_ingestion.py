@@ -30,11 +30,7 @@ class DataIngestion:
 
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path,index=False)
-            logging.info('Train test split')
-            train_set,test_set=train_test_split(df,test_size=0.30,random_state=42)
-
-            train_set.to_csv(self.ingestion_config.train_data_path,index=False,header=True)
-            test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
+            
 
             logging.info('Ingestion of Data is completed')
 
@@ -47,10 +43,10 @@ class DataIngestion:
         except Exception as e:
             logging.info('Exception occured at Data Ingestion stage')
             raise CustomException(e,sys)
-'''if __name__=="__main__":
+if __name__=="__main__":
     obj=DataIngestion()
     train_data_path,test_data_path=obj.initiate_data_ingestion()
     data_transformation=DataTransformation()
     train_arr,test_arr=data_transformation.initaite_data_transformation(train_data_path,test_data_path)
-'''
+
 

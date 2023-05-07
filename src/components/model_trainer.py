@@ -1,7 +1,9 @@
-# Basic Import
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression, Ridge,Lasso,ElasticNet
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
+from sklearn.ensemble import RandomForestRegressor
 from src.exception import CustomException
 from src.logger import logging
 
@@ -24,7 +26,7 @@ class ModelTrainer:
     def initate_model_training(self,train_array,test_array):
         try:
             logging.info('Splitting Dependent and Independent variables from train and test data')
-            xtrain, ytrain, xtest, ytest = (
+            X_train, y_train, X_test, y_test = (
                 train_array[:,:-1],
                 train_array[:,-1],
                 test_array[:,:-1],
@@ -35,10 +37,13 @@ class ModelTrainer:
             'LinearRegression':LinearRegression(),
             'Lasso':Lasso(),
             'Ridge':Ridge(),
-            'Elasticnet':ElasticNet()
+            'Elasticnet':ElasticNet(),
+            'DecisionTreeRegressor':DecisionTreeRegressor(),
+            'RandomForestRegressor' : RandomForestRegressor(),
+            'SupportVectorRegressor' : SVR(kernel='linear')
         }
             
-            model_report:dict=evaluate_model(xtrain,ytrain,xtest,ytest,models)
+            model_report:dict=evaluate_model(X_train,y_train,X_test,y_test,models)
             print(model_report)
             print('\n====================================================================================\n')
             logging.info(f'Model Report : {model_report}')
@@ -60,6 +65,8 @@ class ModelTrainer:
                  file_path=self.model_trainer_config.trained_model_file_path,
                  obj=best_model
             )
+
+            return f'Best Model Found , Model Name : {best_model_name} , R2 Score : {best_model_score}'
           
 
         except Exception as e:
