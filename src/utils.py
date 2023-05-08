@@ -20,22 +20,22 @@ def save_object(file_path, obj):
     except Exception as e:
         raise CustomException(e, sys)
     
-def evaluate_model(xtrain,ytrain,xtest,ytest,models):
+def evaluate_model(X_train,y_train,X_test,y_test,models):
     try:
         report = {}
         for i in range(len(models)):
             model = list(models.values())[i]
             # Train model
-            model.fit(xtrain,ytrain)
+            model.fit(X_train,y_train)
 
             
 
             # Predict Testing data
-            y_pred =model.predict(xtest)
+            y_test_pred =model.predict(X_test)
 
-            #Get R2 scores for train and test data
-            train_model_score = r2_score(ytrain,y_pred)
-            test_model_score = r2_score(ytest,y_pred)
+            # Get R2 scores for train and test data
+            #train_model_score = r2_score(ytrain,y_train_pred)
+            test_model_score = r2_score(y_test,y_test_pred)
 
             report[list(models.keys())[i]] =  test_model_score
 
@@ -52,5 +52,23 @@ def load_object(file_path):
     except Exception as e:
         logging.info('Exception Occured in load_object function utils')
         raise CustomException(e,sys)
-
     
+def filter_int_float_values(column_data):
+    logging.info("Inside filter_int_float_values method")
+    for i in range(len(column_data)):
+        if '.' in str(column_data.iloc[i]) or  column_data.iloc[i] == '1':
+            column_data.iloc[i] = np.nan
+    logging.info("Completed execution in filter_int_float_values method")
+    return column_data    
+
+def remove_outliers(data):
+    logging.info("Inside remove_outliers method")
+    quantiles = data['Restaurant_Delivery_distance'].quantile([0.25,0.5,0.75]).to_list()
+
+    q1 = quantiles[0]
+    q3 = quantiles[2]
+    IQR = q3-q1
+
+    data = data[~((data['Restaurant_Delivery_distance']<(q1-1.5*IQR)) | (data['Restaurant_Delivery_distance']>(q3+1.5*IQR)))]
+    logging.info("Completed execution in remove_outliers method")
+    return data
