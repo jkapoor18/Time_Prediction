@@ -72,3 +72,4 @@ def remove_outliers(data):
     data = data[~((data['Restaurant_Delivery_distance']<(q1-1.5*IQR)) | (data['Restaurant_Delivery_distance']>(q3+1.5*IQR)))]
     logging.info("Completed execution in remove_outliers method")
     return data
+    
