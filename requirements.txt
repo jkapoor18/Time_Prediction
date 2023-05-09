@@ -4,5 +4,4 @@ Flask
 scikit-learn
 seaborn
 geopy
-#pickle5
 -e .
