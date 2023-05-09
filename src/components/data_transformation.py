@@ -17,7 +17,13 @@ from src.utils import save_object,filter_int_float_values,remove_outliers
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path=os.path.join('artifacts','preprocessor.pkl')
+<<<<<<< HEAD
     
+=======
+    train_data_path:str=os.path.join('artifacts','train.csv')
+    test_data_path:str=os.path.join('artifacts','test.csv')
+
+>>>>>>> origin/main
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config=DataTransformationConfig()

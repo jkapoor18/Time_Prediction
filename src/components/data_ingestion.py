@@ -26,7 +26,11 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info('Data Ingestion methods Starts')
         try:
+<<<<<<< HEAD
             df=pd.read_csv(r"notebooks\data\finalTrain.csv")
+=======
+            df=pd.read_csv(os.path.join(r"C:\time_prediction\notebooks\data\finalTrain.csv"))
+>>>>>>> origin/main
             logging.info('Dataset read as pandas Dataframe')
 
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
@@ -49,10 +53,18 @@ class DataIngestion:
         except Exception as e:
             logging.info('Exception occured at Data Ingestion stage')
             raise CustomException(e,sys)
+<<<<<<< HEAD
 if __name__=="__main__":
+=======
+'''if __name__=="__main__":
+>>>>>>> origin/main
     obj=DataIngestion()
     train_data_path,test_data_path=obj.initiate_data_ingestion()
     data_transformation=DataTransformation()
     train_arr,test_arr=data_transformation.initaite_data_transformation(train_data_path,test_data_path)
+<<<<<<< HEAD
 
+=======
+'''
+>>>>>>> origin/main
 

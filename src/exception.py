@@ -21,12 +21,23 @@ class CustomException(Exception):
         return self.error_message    
     
 
+<<<<<<< HEAD
 '''
 if __name__=="__main__":
+=======
+
+'''if __name__=="__main__":
+>>>>>>> origin/main
     logging.info("Logging has started")
 
     try:
         a=1/0
     except Exception as e:
+<<<<<<< HEAD
         logging.info('Division by zero') 
         raise CustomException(e,sys)'''
+=======
+        logging.info('Dicision by zero') 
+        raise CustomException(e,sys)
+    '''
+>>>>>>> origin/main
