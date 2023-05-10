@@ -1,0 +1,95 @@
+<html>
+<body>
+<form action="{{url_for('predict_datapoint')}}" method="POST">
+    <div class="form-group">
+        <label for="Delivery_person_Age">Delivery Person Age:</label>
+        <input type="text" id="Delivery_person_Age" name="Delivery_person_Age" placeholder="Enter delivery person age (float)">
+    </div>
+
+    <div class="form-group">
+        <label for="Delivery_person_Ratings">Delivery Person Ratings:</label>
+        <input type="text" id="Delivery_person_Ratings" name="Delivery_person_Ratings" placeholder="Enter delivery person ratings value (float)">
+    </div>
+
+    <div class="form-group">  
+        <label for="Restaurant_Delivery_distance">Restaurant Delivery Distance:</label>
+        <input type="text" id="Restaurant_Delivery_distance" name="Restaurant_Delivery_distance" placeholder="Enter Restaurant Delivery Distance value (float)">
+    </div>
+
+    <div class="form-group">
+        <label for="preparation_time">Preparation Time:</label>
+        <input type="text" id="preparation_time" name="preparation_time" placeholder="Enter preparation time value (float)">
+    </div>         
+  
+<div class="form-group">
+  <label for="Weather_conditions">Weather Conditions:</label>
+  <select id="Weather_conditions" name="Weather_conditions">
+    <option value="Sunny">Sunny</option>
+    <option value="Stormy">Stormy</option>
+    <option value="Sandstorms">Sandstorms</option>
+    <option value="Windy">Windy</option>
+    <option value="Cloudy">Cloudy</option>
+    <option value="Fog">Fog</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="Road_traffic_density">Road traffic density:</label>
+  <select id="Road_traffic_density" name="Road_traffic_density">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+    <option value="Jam">Jam</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="Vehicle_condition">Vehicle Condition:</label>
+  <select id="Vehicle_condition" name="Vehicle_condition">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+  </select>
+</div>
+
+<div class="form-group">
+    <label for="Type_of_vehicle">Type of Vehicle:</label>
+    <select id="Type_of_vehicle" name="Type_of_vehicle">
+      <option value="motorcycle">motorcycle</option>
+      <option value="scooter">scooter</option>
+      <option value="electric_scooter">electric_scooter</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="multiple_deliveries">Multiple Deliveries:</label>
+    <select id="multiple_deliveries" name="multiple_deliveries">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="Festival">Festival:</label>
+    <select id="Festival" name="Festival">
+      <option value="No">No</option>
+      <option value="Yes">Yes</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="City">City:</label>
+    <select id="City" name="City">
+      <option value="Metropolitian">Metropolitian</option>
+      <option value="Urban">Urban</option>
+      <option value="Semi-Urban">Semi-Urban</option>
+    </select>
+</div>
+
+<div style="clear:both;"></div>
+  <input type="submit" value="Submit">
+</form>
+</body>
+</html>
