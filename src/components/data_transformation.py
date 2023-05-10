@@ -17,13 +17,9 @@ from src.utils import save_object,filter_int_float_values,remove_outliers
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path=os.path.join('artifacts','preprocessor.pkl')
-<<<<<<< HEAD
-    
-=======
     train_data_path:str=os.path.join('artifacts','train.csv')
     test_data_path:str=os.path.join('artifacts','test.csv')
 
->>>>>>> origin/main
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config=DataTransformationConfig()
@@ -76,13 +72,15 @@ class DataTransformation:
             logging.info("Error in Data Trnasformation")
             raise CustomException(e,sys)
         
-    def initaite_data_transformation(self,raw_data_path):
+    def initaite_data_transformation(self,train_path,test_path):
         try:
             # Reading train and test data
-            data = pd.read_csv(raw_data_path)
+            data = pd.read_csv(train_path)
+            data = pd.read_csv(test_path)
 
-            logging.info('Read raw data completed')
-            logging.info(f'Raw Dataframe Head : \n{data.head().to_string()}')
+            logging.info('Read train and test data completed')
+            logging.info(f'Train Dataframe Head : \n{data.head().to_string()}')
+            logging.info(f'Test Dataframe Head  : \n{data.head().to_string()}')
 
             logging.info("EDA and Feature Engineering Started")
 
@@ -174,6 +172,8 @@ class DataTransformation:
                 obj=preprocessing_obj
             )
             logging.info('Preprocessor pickle file saved')
+          
+
             
 
             return (

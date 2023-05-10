@@ -8,6 +8,8 @@ from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformation
 
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 
 ## Intitialize the Data Ingetion Configuration
@@ -26,7 +28,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info('Data Ingestion methods Starts')
         try:
-            df=pd.read_csv(os.path.join(r"C:\time_prediction\notebooks\data\finalTrain.csv"))
+            df=pd.read_csv(os.path.join(r"notebooks\data\finalTrain.csv"))
             logging.info('Dataset read as pandas Dataframe')
 
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
@@ -49,9 +51,11 @@ class DataIngestion:
         except Exception as e:
             logging.info('Exception occured at Data Ingestion stage')
             raise CustomException(e,sys)
-'''if __name__=="__main__":
+if __name__=="__main__":
     obj=DataIngestion()
     train_data_path,test_data_path=obj.initiate_data_ingestion()
     data_transformation=DataTransformation()
-    train_arr,test_arr=data_transformation.initaite_data_transformation(train_data_path,test_data_path
-'''
+    train_arr,test_arr,_=data_transformation.initaite_data_transformation(train_data_path,test_data_path)
+
+    ModelTrainer=ModelTrainer()
+    print(ModelTrainer.initate_model_training(train_arr,test_arr))
